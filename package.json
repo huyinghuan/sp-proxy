@@ -1,0 +1,11 @@
+{
+  "name": "st-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "ec.huyinghuan@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "http-proxy": "^1.15.2"
+  }
+}
