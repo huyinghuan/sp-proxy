@@ -21,14 +21,14 @@ exports.registerPlugin = (cli, options)=>{
     return null;
   }
   cli.registerHook('route:initial', (router)=>{
-    router.get('*', function(req, res, next){
+    router.all('*', function(req, res, next){
       let setting = getProxySetting(req.path);
       if(!setting){
         return next()
       }
-      console.log(`proxy ${req.url} -> ${setting.forward || setting.target}`.yellow)
+      cli.log.info(`proxy ${req.url} -> ${setting.forward || setting.target}`.yellow)
       _http_proxy.web(req, res, setting, (e)=>{
-        console.error(e)
+        cli.log.error(e)
         res.sendStatus(500)
       })
     });
